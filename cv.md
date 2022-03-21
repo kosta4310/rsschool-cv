@@ -56,6 +56,22 @@ For a long time I wanted to do my favorite thing - programming. At first, I lear
 
 ### Example code
 
+```java script
+A function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+function filter_list(l) {
+  let arr = l;
+let result = [];
+for (let each of arr) {
+  if (typeof each === "number") {
+    result.push(each);
+  }
+}
+return result;
+  // Return a new array with the strings filtered out
+}
+```
+
 ---
 
 ### Experience
