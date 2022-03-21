@@ -66,10 +66,14 @@ For a long time I wanted to do my favorite thing - programming. At first, I lear
 - **Technical consultant and salesperson in a spare parts store for imported cars** - Bosch Car Service, Kriviy Rih,Ukraine  
   Technical consultations, search and selection of spare parts for special programs for cars and ordering, selection of the assortment of the store and the organization of filling the warehouse of spare parts, quality control of goods.
 
+---
+
 ### Projects
 
 - [**Data Ocean Sanction Parsing**](https://github.com/VeteraniusWeb2021/SanctionParsing.git) - Work not completed due to war
 - [**Mineersweeper Game**](https://github.com/kosta4310/Saper)
+
+---
 
 ### Languages
 
