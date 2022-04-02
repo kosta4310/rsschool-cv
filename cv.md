@@ -56,7 +56,7 @@ For a long time I wanted to do my favorite thing - programming. At first, I lear
 
 ### Example code
 
-```java script
+```javascript
 A function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
 
 function filter_list(l) {
