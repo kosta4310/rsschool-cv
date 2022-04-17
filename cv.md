@@ -50,7 +50,8 @@ For a long time I wanted to do my favorite thing - programming. At first, I lear
 
 ### Courses
 
-- **Veteranius bootcamp 3_0** - DBA
+- **Veteranius bootcamp 3_0** - Database administrator PostgreSQL
+- **The Rolling Scopes School** - JavaScript/Front-end 2022Q1 (in progress)
 
 ---
 
