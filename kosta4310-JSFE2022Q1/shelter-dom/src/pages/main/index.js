@@ -1,7 +1,7 @@
-import * as hamburger from "../../assets/js/hamburger.mjs";
-import { popUp } from "../../assets/js/modal.mjs";
-import { Card } from "../../assets/js/card.mjs";
-import { arrayPets } from "../../assets/js/petsJson.mjs";
+import * as hamburger from "../../assets/js/hamburger.js";
+import { popUp } from "../../assets/js/modal.js";
+import { Card } from "../../assets/js/card.js";
+import { arrayPets } from "../../assets/js/petsJson.js";
 hamburger.hamburger();
 
 popUp();

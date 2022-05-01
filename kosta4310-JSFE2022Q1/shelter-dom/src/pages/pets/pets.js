@@ -1,9 +1,9 @@
-import * as hamburger from "../../assets/js/hamburgerBlack.mjs";
-import * as popUp from "../../assets/js/modal.mjs";
-import { Card } from "../../assets/js/card.mjs";
-import { arrayPets } from "../../assets/js/petsJson.mjs";
-import { Page } from "../../assets/js/pages.mjs";
-import { generateArray } from "../../assets/js/generateArray.mjs";
+import * as hamburger from "../../assets/js/hamburgerBlack.js";
+import * as popUp from "../../assets/js/modal.js";
+import { Card } from "../../assets/js/card.js";
+import { arrayPets } from "../../assets/js/petsJson.js";
+import { Page } from "../../assets/js/pages.js";
+import { generateArray } from "../../assets/js/generateArray.js";
 hamburger.hamburger();
 popUp.popUpSecond();
 let pages = new Page(1, 8);
