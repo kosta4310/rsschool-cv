@@ -1,4 +1,4 @@
-import { arrayPets } from "./petsJson.mjs";
+import { arrayPets } from "./petsJson.js";
 export function popUp() {
   let modal = document.querySelector(".our-friends .modal");
   let buttonCloseModal = document.querySelector(".button-close-modal");

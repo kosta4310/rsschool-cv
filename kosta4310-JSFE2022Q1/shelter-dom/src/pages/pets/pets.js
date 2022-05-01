@@ -4,6 +4,7 @@ import { Card } from "../../assets/js/card.js";
 import { arrayPets } from "../../assets/js/petsJson.js";
 import { Page } from "../../assets/js/pages.js";
 import { generateArray } from "../../assets/js/generateArray.js";
+import "./scss/style.scss";
 hamburger.hamburger();
 popUp.popUpSecond();
 let pages = new Page(1, 8);

@@ -372,10 +372,10 @@
 
 .transition-right {
   animation-name: move-right;
-  animation-duration: 4s;
+  animation-duration: 2s;
   @include media-laptop {
     animation-name: move-right-laptop;
-    animation-duration: 2s;
+    animation-duration: 1s;
   }
   @include media-tablet {
     animation-name: move-right-tablet;
@@ -392,10 +392,10 @@
 }
 .transition-left {
   animation-name: move-left;
-  animation-duration: 4s;
+  animation-duration: 2s;
   @include media-laptop {
     animation-name: move-left-laptop;
-    animation-duration: 2s;
+    animation-duration: 1s;
   }
   @include media-tablet {
     animation-name: move-left-tablet;

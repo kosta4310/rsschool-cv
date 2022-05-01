@@ -1269,15 +1269,15 @@ body {
 .transition-right {
   -webkit-animation-name: move-right;
           animation-name: move-right;
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
 }
 @media (max-width: 1279px) {
   .transition-right {
     -webkit-animation-name: move-right-laptop;
             animation-name: move-right-laptop;
-    -webkit-animation-duration: 2s;
-            animation-duration: 2s;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
   }
 }
 @media (max-width: 767px) {
@@ -1309,15 +1309,15 @@ body {
 .transition-left {
   -webkit-animation-name: move-left;
           animation-name: move-left;
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
 }
 @media (max-width: 1279px) {
   .transition-left {
     -webkit-animation-name: move-left-laptop;
             animation-name: move-left-laptop;
-    -webkit-animation-duration: 2s;
-            animation-duration: 2s;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
   }
 }
 @media (max-width: 767px) {
