@@ -3,6 +3,7 @@ import { popUp } from "../../assets/js/modal.js";
 import { Card } from "../../assets/js/card.js";
 import { arrayPets } from "../../assets/js/petsJson.js";
 import "./scss/style.scss";
+
 hamburger.hamburger();
 
 popUp();
