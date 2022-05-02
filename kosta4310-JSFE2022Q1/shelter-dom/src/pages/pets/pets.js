@@ -1,10 +1,10 @@
-import * as hamburger from "../../assets/js/hamburgerBlack.js";
-import * as popUp from "../../assets/js/modal.js";
-import { Card } from "../../assets/js/card.js";
-import { arrayPets } from "../../assets/js/petsJson.js";
-import { Page } from "../../assets/js/pages.js";
-import { generateArray } from "../../assets/js/generateArray.js";
-import "./scss/style.scss";
+import * as hamburger from "../../js/hamburgerBlack.js";
+import * as popUp from "../../js/modal.js";
+import { Card } from "../../js/card.js";
+import { arrayPets } from "../../js/petsJson.js";
+import { Page } from "../../js/pages.js";
+import { generateArray } from "../../js/generateArray.js";
+
 hamburger.hamburger();
 popUp.popUpSecond();
 let pages = new Page(1, 8);

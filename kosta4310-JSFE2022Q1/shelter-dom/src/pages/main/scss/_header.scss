@@ -80,8 +80,8 @@
     display: none;
   }
 }
-@import "../../../assets/global-scss/hamburger";
-@import "../../../assets/global-scss/header-menu-open";
+@import "../../../global-scss/hamburger";
+@import "../../../global-scss/header-menu-open";
 
 .overlay {
   @include media-tablet {

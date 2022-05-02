@@ -81,8 +81,7 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -776,8 +775,6 @@ body {
 }
 @media (max-width: 767px) {
   .about__image {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
   }
 }
@@ -807,8 +804,6 @@ body {
     text-align: center;
     margin: 0 auto;
     margin-bottom: 25px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
   }
 }
@@ -831,8 +826,6 @@ body {
   .content-about__text-top {
     margin-bottom: 22px;
     text-align: justify;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
   }
 }
@@ -841,8 +834,6 @@ body {
 }
 @media (max-width: 767px) {
   .content-about__text-bottom {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     text-align: justify;
   }
@@ -917,8 +908,6 @@ body {
 }
 @media (max-width: 767px) {
   .our-friends-title {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     padding-bottom: 42px;
   }
@@ -1249,15 +1238,6 @@ body {
   top: 50%;
 }
 
-@-webkit-keyframes move-right {
-  from {
-    left: -1080px;
-  }
-  to {
-    left: -2160px;
-  }
-}
-
 @keyframes move-right {
   from {
     left: -1080px;
@@ -1267,34 +1247,19 @@ body {
   }
 }
 .transition-right {
-  -webkit-animation-name: move-right;
-          animation-name: move-right;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
+  animation-name: move-right;
+  animation-duration: 2s;
 }
 @media (max-width: 1279px) {
   .transition-right {
-    -webkit-animation-name: move-right-laptop;
-            animation-name: move-right-laptop;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
+    animation-name: move-right-laptop;
+    animation-duration: 1s;
   }
 }
 @media (max-width: 767px) {
   .transition-right {
-    -webkit-animation-name: move-right-tablet;
-            animation-name: move-right-tablet;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-  }
-}
-
-@-webkit-keyframes move-left {
-  from {
-    left: -1080px;
-  }
-  to {
-    left: 0;
+    animation-name: move-right-tablet;
+    animation-duration: 1s;
   }
 }
 
@@ -1307,34 +1272,19 @@ body {
   }
 }
 .transition-left {
-  -webkit-animation-name: move-left;
-          animation-name: move-left;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
+  animation-name: move-left;
+  animation-duration: 2s;
 }
 @media (max-width: 1279px) {
   .transition-left {
-    -webkit-animation-name: move-left-laptop;
-            animation-name: move-left-laptop;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
+    animation-name: move-left-laptop;
+    animation-duration: 1s;
   }
 }
 @media (max-width: 767px) {
   .transition-left {
-    -webkit-animation-name: move-left-tablet;
-            animation-name: move-left-tablet;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-  }
-}
-
-@-webkit-keyframes move-right-laptop {
-  from {
-    left: -620px;
-  }
-  to {
-    left: -1240px;
+    animation-name: move-left-tablet;
+    animation-duration: 1s;
   }
 }
 
@@ -1346,14 +1296,6 @@ body {
     left: -1240px;
   }
 }
-@-webkit-keyframes move-right-tablet {
-  from {
-    left: -290px;
-  }
-  to {
-    left: -580px;
-  }
-}
 @keyframes move-right-tablet {
   from {
     left: -290px;
@@ -1362,25 +1304,9 @@ body {
     left: -580px;
   }
 }
-@-webkit-keyframes move-left-laptop {
-  from {
-    left: -620px;
-  }
-  to {
-    left: 0;
-  }
-}
 @keyframes move-left-laptop {
   from {
     left: -620px;
-  }
-  to {
-    left: 0;
-  }
-}
-@-webkit-keyframes move-left-tablet {
-  from {
-    left: -290px;
   }
   to {
     left: 0;
@@ -1595,8 +1521,6 @@ body {
 }
 @media (max-width: 767px) {
   .in-addition__title {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     text-align: center;
   }
@@ -1609,8 +1533,7 @@ body {
 }
 .in-addition__text {
   width: 380px;
-  -moz-text-align-last: left;
-       text-align-last: left;
+  text-align-last: left;
   font-style: italic;
   font-size: 12px;
   line-height: 18px;
@@ -1618,8 +1541,6 @@ body {
 }
 @media (max-width: 767px) {
   .in-addition__text {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     text-align: justify;
     padding: 0 10px;
@@ -1647,8 +1568,6 @@ body {
   .number-card__button {
     justify-content: center;
     gap: 0 15px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
   }
 }
