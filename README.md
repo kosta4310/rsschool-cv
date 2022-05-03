@@ -1,4 +1,4 @@
 # rsschool-cv
 
-my clone
-repo
+virtual-keyboard
+
