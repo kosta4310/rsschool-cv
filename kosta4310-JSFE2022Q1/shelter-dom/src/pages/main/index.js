@@ -2,6 +2,7 @@ import * as hamburger from "../../js/hamburger.js";
 import { popUp } from "../../js/modal.js";
 import { Card } from "../../js/card.js";
 import { arrayPets } from "../../js/petsJson.js";
+// import "./scss/index.scss";
 
 hamburger.hamburger();
 
