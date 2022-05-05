@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { resolve } = require("path");
 const { Hash } = require("crypto");
-const CopyPlugin = require("copy-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 // ejs.renderFile(filename, data, options, function (err, str) {
@@ -35,9 +35,9 @@ const config = {
       template: "index.html",
       chunks: ["index"],
     }),
-    new CopyPlugin({
-      patterns: [{ from: "./src/assets", to: "assets" }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: "./src/assets", to: "assets" }],
+    // }),
     new CleanWebpackPlugin(),
 
     // Add your plugins here
