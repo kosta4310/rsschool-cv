@@ -47,18 +47,7 @@ let arrayKeys = keyboard.create(isEnglish ? 'eng' : 'kir');
 arrayKeys.forEach((elem) => {
   keyBoardBlock.appendChild(elem);
 });
-// buttonLanguages = document.querySelector("#Language");
-// buttonLanguages.addEventListener('click', (e) => {
-//   arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
-//   isEnglish = !isEnglish;
-//   capsLock = false;
-//   languages.textContent = isEnglish ? "English" : "Русский";
-//   window.sessionStorage.setItem("isEnglish", isEnglish);
-//   keyBoardBlock.innerHTML = "";
-//   arrayKeys.forEach((elem) => {
-//     keyBoardBlock.appendChild(elem);
-//   });
-// })
+
 function handleDown(e, code) {
   e.preventDefault();
 
@@ -70,25 +59,47 @@ function handleDown(e, code) {
        if (!pressed.has(key)) return;
      }
      pressed.clear();
-     arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
+     arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
      isEnglish = !isEnglish;
      capsLock = false;
-     languages.textContent = isEnglish ? "English" : "Русский";
-     window.sessionStorage.setItem("isEnglish", isEnglish);
-     keyBoardBlock.innerHTML = "";
+     languages.textContent = isEnglish ? 'English' : 'Русский';
+     window.sessionStorage.setItem('isEnglish', isEnglish);
+     keyBoardBlock.innerHTML = '';
      arrayKeys.forEach((elem) => {
        keyBoardBlock.appendChild(elem);
      });
    }
-   changeLanguage(e);
+  changeLanguage(e);
+  function insertSimbol() {
+    textField.setRangeText(
+      keyboard.getSimbolKey(code),
+      textField.selectionStart,
+      textField.selectionEnd,
+      'end',
+    );
+  }
+  function insertUpperCaseSimbol() {
+    textField.setRangeText(
+      keyboard.getSimbolKey(code).toUpperCase(),
+      textField.selectionStart,
+      textField.selectionEnd,
+      'end',
+      
+    );
+    
+  }
   function checkConditions() {
     if (Keyboard.isPrintKey(code)) {
       if (code === 'Space') textField.textContent += ' ';
       else if (code === 'Tab') textField.textContent += '  ';
-      else if (!capsLock) textField.textContent += keyboard.getSimbolKey(code);
-      else {
-        textField.textContent += keyboard.getSimbolKey(code).toUpperCase();
+      else if (!capsLock) {
+        // textField.textContent += keyboard.getSimbolKey(code);
+        insertSimbol(code);
+      } else {
+        insertUpperCaseSimbol(code);
       }
+
+      textField.focus();
     }
   }
   if (code === 'ShiftLeft') {
@@ -99,19 +110,19 @@ function handleDown(e, code) {
       if (code === 'Space') textField.textContent += ' ';
       else if (code === 'Tab') textField.textContent += '  ';
       else if ((!capsLock && !isShift) || (capsLock && isShift)) {
-        textField.textContent += keyboard.getSimbolKey(code);
+        insertSimbol(code);
       } else {
-        textField.textContent += keyboard.getSimbolKey(code).toUpperCase();
+        insertUpperCaseSimbol(code);
       }
     }
   } else checkConditions();
   if (code === 'Language') {
-   arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
+   arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
    isEnglish = !isEnglish;
    capsLock = false;
-   languages.textContent = isEnglish ? "English" : "Русский";
-   window.sessionStorage.setItem("isEnglish", isEnglish);
-   keyBoardBlock.innerHTML = "";
+   languages.textContent = isEnglish ? 'English' : 'Русский';
+   window.sessionStorage.setItem('isEnglish', isEnglish);
+   keyBoardBlock.innerHTML = '';
    arrayKeys.forEach((elem) => {
      keyBoardBlock.appendChild(elem);
    });
