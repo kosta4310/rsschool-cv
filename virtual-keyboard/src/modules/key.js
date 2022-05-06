@@ -11,8 +11,4 @@ export default class Key {
 
     return key;
   }
-
-  // getSimbol(language) {
-  //   return language === 'eng' ? this.engKey : this.kirKey;
-  // }
 }
