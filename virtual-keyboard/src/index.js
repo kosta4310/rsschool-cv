@@ -137,13 +137,31 @@ function handleDown(e, code) {
       }
       break;
     case 'Delete':
-      
-        textField.setRangeText(
-          '',
-          (textField.selectionStart),
-          textField.selectionEnd += 1,
-        );
-      
+      textField.setRangeText(
+        '',
+        textField.selectionStart,
+        (textField.selectionEnd += 1),
+      );
+
+      break;
+    case 'ArrowLeft':
+      if (textField.selectionStart > 0) {
+        textField.selectionStart -= 1;
+        textField.selectionEnd -= 1;
+      }
+      break;
+    case 'ArrowRight':
+      textField.selectionEnd += 1;
+      textField.selectionStart += 1;
+
+      break;
+    case 'Enter':
+      textField.setRangeText(
+        '\n',
+        (textField.selectionStart),
+        textField.selectionEnd,
+'end',
+      );
       break;
     default:
       break;
