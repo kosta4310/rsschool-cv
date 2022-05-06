@@ -4,7 +4,7 @@ import Keyboard from './modules/keyboard';
 let isEnglish = (
   window.sessionStorage.getItem('isEnglish')
 ) === 'true';
-
+let capsLock = false;
 console.log(typeof isEnglish);
 console.log(isEnglish);
 const pressed = new Set();
@@ -77,14 +77,22 @@ function handleDown(e, code) {
    if (Keyboard.isPrintKey(code)) {
      if (code === 'Space') textField.textContent += ' ';
      else if (code === 'Tab') textField.textContent += '  ';
-     else textField.textContent += keyboard.getSimbolKey(code);
+     else if (!capsLock) textField.textContent += keyboard.getSimbolKey(code);
+     else {
+       textField.textContent += keyboard.getSimbolKey(code).toUpperCase();
+     }
    }
    }
 
 function handleUp(e, code) {
    e.preventDefault();
-   pressed.delete(code);
-   Keyboard.removeHighlightKey(code);
+  pressed.delete(code);
+  if (code === 'CapsLock' && capsLock) {
+    capsLock = !capsLock;
+    Keyboard.removeHighlightKey(code);
+  } else if (code === 'CapsLock' && !capsLock) {
+    capsLock = !capsLock;
+  } else Keyboard.removeHighlightKey(code);
 }
 document.body.addEventListener('keydown', (e) => {
    handleDown(e, e.code);
