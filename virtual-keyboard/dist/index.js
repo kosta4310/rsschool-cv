@@ -1,0 +1,360 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/modules/key.js":
+/*!****************************!*\
+  !*** ./src/modules/key.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Key)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Key = /*#__PURE__*/function () {
+  function Key(code, kirKey, engKey) {
+    _classCallCheck(this, Key);
+
+    this.code = code;
+    this.kirKey = kirKey;
+    this.engKey = engKey;
+  }
+
+  _createClass(Key, [{
+    key: "createKey",
+    value: function createKey(language) {
+      var key = document.createElement('span');
+      key.innerHTML = language === 'eng' ? this.engKey : this.kirKey;
+      return key;
+    } // getSimbol(language) {
+    //   return language === 'eng' ? this.engKey : this.kirKey;
+    // }
+
+  }]);
+
+  return Key;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/modules/keyboard.js":
+/*!*********************************!*\
+  !*** ./src/modules/keyboard.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Keyboard)
+/* harmony export */ });
+/* harmony import */ var _key__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./key */ "./src/modules/key.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var array = {
+  codeArray: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight', 'ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight'],
+  kiril: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'del', 'caps<br>lock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter', 'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '&#8593', 'shift', 'ctrl', 'alt', '', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594', 'us'],
+  english: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del', 'caps<br>lock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8593', 'shift', 'ctrl', 'alt', '', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594', 'us'],
+  printKey: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'Space', 'ArrowLeft', 'ArrowDown', 'ArrowRight']
+};
+
+var Keyboard = /*#__PURE__*/function () {
+  function Keyboard() {
+    _classCallCheck(this, Keyboard);
+
+    _defineProperty(this, "arrayKeys", []);
+
+    _defineProperty(this, "language", '');
+
+    _defineProperty(this, "arrayInstance", []);
+
+    this.kiril = array.kiril;
+    this.english = array.english;
+    this.codeArray = array.codeArray; // this.arrayKeys = [];
+  }
+
+  _createClass(Keyboard, [{
+    key: "create",
+    value: function create(language) {
+      this.language = language;
+      this.arrayKeys = [];
+
+      for (var i = 0; i < this.codeArray.length; i++) {
+        var temp = new _key__WEBPACK_IMPORTED_MODULE_0__["default"](this.codeArray[i], this.kiril[i], this.english[i]);
+        this.arrayInstance.push(temp);
+        var elem = temp.createKey(this.language);
+        elem.id = this.codeArray[i];
+        if (i === 57) elem.classList.add('space');
+        if (this.language === 'kir' && i === 28) elem.dataset.kiril = 'true';
+        if (this.language === 'kir' && i === 57) elem.classList.add('space');
+        this.arrayKeys.push(elem);
+      }
+
+      return this.arrayKeys;
+    }
+  }, {
+    key: "getSimbolKey",
+    value: function getSimbolKey(code) {
+      var index = this.codeArray.indexOf(code);
+      var simbol = this.language === 'eng' ? this.english[index] : this.kiril[index];
+      return simbol;
+    }
+  }], [{
+    key: "highlightKey",
+    value: function highlightKey(code) {
+      var elem = document.querySelector("#".concat(code));
+      elem.classList.add('active');
+    }
+  }, {
+    key: "removeHighlightKey",
+    value: function removeHighlightKey(code) {
+      var elem = document.querySelector("#".concat(code));
+      elem.classList.remove('active');
+    }
+  }, {
+    key: "isPrintKey",
+    value: function isPrintKey(code) {
+      return array.printKey.includes(code);
+    }
+  }]);
+
+  return Keyboard;
+}(); // createKeyBoard(language) {
+//    const arrayKeys = [];
+//    for (let i = 0; i < codeArray.length; i++) {
+//       const temp = new Key(codeArray[i], kiril[i], english[i]);
+//       const elem = temp.createKey(language);
+//       elem.id = codeArray[i];
+//       if (i === 57) elem.classList.add('space');
+//       if (language === 'kir' && i === 28) elem.dataset.kiril = 'true';
+//          if (language === 'kir' && i === 57) elem.classList.add('space');
+//       arrayKeys.push(elem);
+//    }
+//    return arrayKeys;
+// }
+// export function getKeyActive(e) {
+//    if (e.code === 'Space') {
+//    if (e.type === 'keydown') active.style.backgroundColor = 'red';
+//    if (e.type === 'keyup') active.style.backgroundColor = '';
+//    } else {
+//       active.classList.add('active');
+//       if (e.code === 'Tab') {
+//          e.preventDefault();
+//       }
+//       if (e.type === 'keyup') {
+//         active.classList.remove('active');
+//       }
+//    }
+// }
+
+
+
+
+/***/ }),
+
+/***/ "./src/css/style.css":
+/*!***************************!*\
+  !*** ./src/css/style.css ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
+/* harmony import */ var _modules_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/keyboard */ "./src/modules/keyboard.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+var isEnglish = true;
+var pressed = new Set();
+var pairOfkeys = ['AltLeft', 'ShiftLeft'];
+var keyBoardBlock;
+var textField;
+
+function createDocumentElement(clas, name) {
+  var elem = document.createElement("".concat(clas));
+  elem.className = "".concat(name);
+  return elem;
+}
+
+function createHtml() {
+  var wrapper = createDocumentElement('div', 'wrapper');
+  document.body.appendChild(wrapper);
+  var board = createDocumentElement('div', 'board');
+  wrapper.appendChild(board);
+  var label = createDocumentElement('div', 'label');
+  board.appendChild(label);
+  var languages = createDocumentElement('span', 'language');
+  languages.textContent = 'English';
+  var madeForWindows = createDocumentElement('span', 'made-for-windows');
+  madeForWindows.textContent = 'Made for Windows';
+  label.appendChild(languages);
+  label.appendChild(madeForWindows);
+  board.appendChild(label);
+  textField = createDocumentElement('textarea', 'text-field');
+  textField.setAttribute('rows', '10');
+  textField.setAttribute('autofocus', true);
+  textField.style.fontSize = '25px';
+  board.appendChild(textField);
+  keyBoardBlock = createDocumentElement('div', 'key-board-block');
+  board.appendChild(keyBoardBlock);
+}
+
+createHtml();
+var keyboard = new _modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"]();
+var arrayKeys = keyboard.create('eng');
+console.log("create: ".concat(arrayKeys));
+arrayKeys.forEach(function (elem) {
+  keyBoardBlock.appendChild(elem);
+});
+
+function handleDown(e, code) {
+  e.preventDefault();
+  console.log(e);
+
+  function changeLanguage() {
+    pressed.add(code);
+    /* eslint-disable-next-line */
+
+    var _iterator = _createForOfIteratorHelper(pairOfkeys),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var key = _step.value;
+        if (!pressed.has(key)) return;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    pressed.clear();
+    arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
+    isEnglish = !isEnglish;
+    keyBoardBlock.innerHTML = '';
+    arrayKeys.forEach(function (elem) {
+      keyBoardBlock.appendChild(elem);
+    });
+    console.log("change".concat(arrayKeys));
+  }
+
+  changeLanguage(e);
+  _modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].highlightKey(code);
+
+  if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code)) {
+    if (code === 'Space') textField.textContent += ' ';else if (code === 'Tab') textField.textContent += '  ';else textField.textContent += keyboard.getSimbolKey(code);
+  }
+}
+
+function handleUp(e, code) {
+  e.preventDefault();
+  pressed["delete"](code);
+  _modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].removeHighlightKey(code);
+}
+
+document.body.addEventListener('keydown', function (e) {
+  handleDown(e, e.code);
+});
+keyBoardBlock.addEventListener("mousedown", function (e) {
+  handleDown(e, e.target.id);
+});
+document.body.addEventListener('keyup', function (e) {
+  handleUp(e, e.code);
+});
+keyBoardBlock.addEventListener("mouseup", function (e) {
+  handleUp(e, e.target.id);
+});
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=index.js.map
