@@ -1,10 +1,18 @@
-export default class Keybutton {
-  constructor(value) {
-    this.value = value;
+export default class Key {
+  constructor(code, kirKey, engKey) {
+    this.code = code;
+    this.kirKey = kirKey;
+    this.engKey = engKey;
   }
 
-  getKey() {
+  createKey(language) {
     const key = document.createElement('span');
-    key.dataset = this.value;
+    key.innerHTML = language === 'eng' ? this.engKey : this.kirKey;
+
+    return key;
   }
+
+  // getSimbol(language) {
+  //   return language === 'eng' ? this.engKey : this.kirKey;
+  // }
 }
