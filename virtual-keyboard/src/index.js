@@ -43,9 +43,6 @@ arrayKeys.forEach((elem) => {
    keyBoardBlock.appendChild(elem);
 });
 
-
-
-
 function handleDown(e, code) {
    e.preventDefault();
    console.log(e);
@@ -82,13 +79,12 @@ function handleUp(e, code) {
 document.body.addEventListener('keydown', (e) => {
    handleDown(e, e.code);
 });
-keyBoardBlock.addEventListener("mousedown", (e) => {
+keyBoardBlock.addEventListener('mousedown', (e) => {
   handleDown(e, e.target.id);
-  
 });
 document.body.addEventListener('keyup', (e) => {
    handleUp(e, e.code);
 });
-keyBoardBlock.addEventListener("mouseup", (e) => {
+keyBoardBlock.addEventListener('mouseup', (e) => {
   handleUp(e, e.target.id);
 });
