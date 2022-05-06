@@ -7,12 +7,12 @@ const array = {
       'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG',
       'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft',
       'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
-      'ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight'],
+      'ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Language'],
    kiril: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
       'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'del',
       'caps<br>lock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter',
       'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '&#8593', 'shift',
-      'ctrl', 'alt', '', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594', 'us'],
+      'ctrl', 'alt', '', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594', 'ru'],
 
    english: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
          'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
@@ -79,33 +79,3 @@ export default class Keyboard {
       return array.printKey.includes(code);
    }
 }
-
-// createKeyBoard(language) {
-//    const arrayKeys = [];
-//    for (let i = 0; i < codeArray.length; i++) {
-//       const temp = new Key(codeArray[i], kiril[i], english[i]);
-//       const elem = temp.createKey(language);
-//       elem.id = codeArray[i];
-//       if (i === 57) elem.classList.add('space');
-//       if (language === 'kir' && i === 28) elem.dataset.kiril = 'true';
-//          if (language === 'kir' && i === 57) elem.classList.add('space');
-
-//       arrayKeys.push(elem);
-//    }
-//    return arrayKeys;
-// }
-// export function getKeyActive(e) {
-//    if (e.code === 'Space') {
-//    if (e.type === 'keydown') active.style.backgroundColor = 'red';
-//    if (e.type === 'keyup') active.style.backgroundColor = '';
-//    } else {
-//       active.classList.add('active');
-//       if (e.code === 'Tab') {
-//          e.preventDefault();
-//       }
-
-//       if (e.type === 'keyup') {
-//         active.classList.remove('active');
-//       }
-//    }
-// }

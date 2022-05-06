@@ -4,13 +4,14 @@ import Keyboard from './modules/keyboard';
 let isEnglish = (
   window.sessionStorage.getItem('isEnglish')
 ) === 'true';
+
 let capsLock = false;
 const pressed = new Set();
 const pairOfkeys = ['AltLeft', 'ShiftLeft'];
-// const pairOfkeysPrint = ['ShiftLeft', 'KeyE'];
 let isShift = false;
 let keyBoardBlock;
 let textField;
+let languages;
 
 function createDocumentElement(clas, name) {
    const elem = document.createElement(`${clas}`);
@@ -24,8 +25,8 @@ function createHtml() {
    wrapper.appendChild(board);
    const label = createDocumentElement('div', 'label');
    board.appendChild(label);
-   const languages = createDocumentElement('span', 'language');
-   languages.textContent = 'English';
+   languages = createDocumentElement('span', 'language');
+   languages.textContent = isEnglish ? 'English' : 'Русский';
    const madeForWindows = createDocumentElement('span', 'made-for-windows');
    madeForWindows.textContent = 'Made for Windows';
    label.appendChild(languages);
@@ -44,12 +45,42 @@ const keyboard = new Keyboard();
 
 let arrayKeys = keyboard.create(isEnglish ? 'eng' : 'kir');
 arrayKeys.forEach((elem) => {
-   keyBoardBlock.appendChild(elem);
+  keyBoardBlock.appendChild(elem);
 });
-console.log(isShift);
+// buttonLanguages = document.querySelector("#Language");
+// buttonLanguages.addEventListener('click', (e) => {
+//   arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
+//   isEnglish = !isEnglish;
+//   capsLock = false;
+//   languages.textContent = isEnglish ? "English" : "Русский";
+//   window.sessionStorage.setItem("isEnglish", isEnglish);
+//   keyBoardBlock.innerHTML = "";
+//   arrayKeys.forEach((elem) => {
+//     keyBoardBlock.appendChild(elem);
+//   });
+// })
 function handleDown(e, code) {
   e.preventDefault();
+
   Keyboard.highlightKey(code);
+   function changeLanguage() {
+     pressed.add(code);
+     /* eslint-disable-next-line */
+     for (const key of pairOfkeys) {
+       if (!pressed.has(key)) return;
+     }
+     pressed.clear();
+     arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
+     isEnglish = !isEnglish;
+     capsLock = false;
+     languages.textContent = isEnglish ? "English" : "Русский";
+     window.sessionStorage.setItem("isEnglish", isEnglish);
+     keyBoardBlock.innerHTML = "";
+     arrayKeys.forEach((elem) => {
+       keyBoardBlock.appendChild(elem);
+     });
+   }
+   changeLanguage(e);
   function checkConditions() {
     if (Keyboard.isPrintKey(code)) {
       if (code === 'Space') textField.textContent += ' ';
@@ -74,34 +105,17 @@ function handleDown(e, code) {
       }
     }
   } else checkConditions();
-  function changeLanguage() {
-    pressed.add(code);
-    /* eslint-disable-next-line */
-    for (const key of pairOfkeys) {
-      if (!pressed.has(key)) return;
-    }
-    pressed.clear();
-    arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
-    isEnglish = !isEnglish;
-    window.sessionStorage.setItem('isEnglish', isEnglish);
-    keyBoardBlock.innerHTML = '';
-    arrayKeys.forEach((elem) => {
-      keyBoardBlock.appendChild(elem);
-    });
-  }
-  changeLanguage(e);
-  //  shift + keyPrint
-  // function outUpperCase() {
-  //   pressed.add(code);
-  //   /* eslint-disable-next-line */
-  //   for (const key of pairOfkeysPrint) {
-  //     if (!pressed.has(key)) return;
-  //   }
-  //   pressed.clear();
-  //   textField.textContent += keyboard.getSimbolKey(pairOfkeysPrint[1]).toUpperCase();
-  // }
-
-  // end
+  if (code === 'Language') {
+   arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
+   isEnglish = !isEnglish;
+   capsLock = false;
+   languages.textContent = isEnglish ? "English" : "Русский";
+   window.sessionStorage.setItem("isEnglish", isEnglish);
+   keyBoardBlock.innerHTML = "";
+   arrayKeys.forEach((elem) => {
+     keyBoardBlock.appendChild(elem);
+   });
+ }
 }
 
 function handleUp(e, code) {

@@ -76,14 +76,17 @@ body {
 .board {
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .label-wrapper {
   display: inline-block;
 }
 .label {
+  padding: 10px;
   display: flex;
   justify-content: space-between;
-  background-color: blueviolet;
+  background-color: rgb(46, 40, 247, 0.7);
 }
 .language {
 }
@@ -113,10 +116,16 @@ body {
   height: 50px;
   min-width: 48px;
   border-radius: 10px;
-  border: 2px solid royalblue;
+  border: 2px solid rgb(65, 105, 225);
 }
 .key-board-block span[data-kiril="true"] {
   padding: 0 10px;
+}
+.key-board-block span {
+  cursor: pointer;
+}
+.key-board-block span:hover {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 #Enter,
 #ShiftRight {
@@ -126,5 +135,5 @@ body {
   flex: 1 0 auto;
 }
 .active {
-  background-color: red;
+  background-color: rgb(50, 20, 255);
 }
