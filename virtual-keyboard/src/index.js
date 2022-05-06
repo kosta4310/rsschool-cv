@@ -5,11 +5,10 @@ let isEnglish = (
   window.sessionStorage.getItem('isEnglish')
 ) === 'true';
 let capsLock = false;
-console.log(typeof isEnglish);
-console.log(isEnglish);
 const pressed = new Set();
 const pairOfkeys = ['AltLeft', 'ShiftLeft'];
-
+const pairOfkeysPrint = ["ShiftLeft", "KeyE"];
+let isShift = false;
 let keyBoardBlock;
 let textField;
 
@@ -44,49 +43,64 @@ createHtml();
 const keyboard = new Keyboard();
 
 let arrayKeys = keyboard.create(isEnglish ? 'eng' : 'kir');
-console.log(isEnglish);
 arrayKeys.forEach((elem) => {
    keyBoardBlock.appendChild(elem);
 });
-
+console.log(isShift);
 function handleDown(e, code) {
    e.preventDefault();
-
-   function changeLanguage() {
-     pressed.add(code);
-     /* eslint-disable-next-line */
-     for (const key of pairOfkeys) {
+  if (code === "ShiftLeft") {
+    isShift = true;
+  }
+  if (Keyboard.isPrintKey(code) && isShift) {
+    console.log(code);
+  }
+    function changeLanguage() {
+      pressed.add(code);
+      /* eslint-disable-next-line */
+      for (const key of pairOfkeys) {
+        if (!pressed.has(key)) return;
+      }
+      pressed.clear();
+      arrayKeys = isEnglish ? keyboard.create("kir") : keyboard.create("eng");
+      isEnglish = !isEnglish;
+      window.sessionStorage.setItem("isEnglish", isEnglish);
+      keyBoardBlock.innerHTML = "";
+      arrayKeys.forEach((elem) => {
+        keyBoardBlock.appendChild(elem);
+      });
+    }
+   changeLanguage(e);
+  //  shift + keyPrint
+  function outUpperCase(e, code) {
+    pressed.add(code);
+    /* eslint-disable-next-line */
+     for (const key of pairOfkeysPrint) {
        if (!pressed.has(key)) return;
      }
-     pressed.clear();
-     arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
-      isEnglish = !isEnglish;
-      console.log(typeof isEnglish);
-      window.sessionStorage.setItem('isEnglish', isEnglish);
-
-     keyBoardBlock.innerHTML = '';
-
-     arrayKeys.forEach((elem) => {
-       keyBoardBlock.appendChild(elem);
-     });
+    pressed.clear();
+    textField.textContent += keyboard.getSimbolKey(pairOfkeysPrint[1]).toUpperCase();
    }
-
-   changeLanguage(e);
-
-   Keyboard.highlightKey(code);
+  
+     // end
+     Keyboard.highlightKey(code);
    if (Keyboard.isPrintKey(code)) {
      if (code === 'Space') textField.textContent += ' ';
      else if (code === 'Tab') textField.textContent += '  ';
      else if (!capsLock) textField.textContent += keyboard.getSimbolKey(code);
-     else {
+       else {
        textField.textContent += keyboard.getSimbolKey(code).toUpperCase();
      }
    }
+ 
    }
 
 function handleUp(e, code) {
    e.preventDefault();
   pressed.delete(code);
+  if (code === "ShiftLeft") {
+    isShift = false;
+  }
   if (code === 'CapsLock' && capsLock) {
     capsLock = !capsLock;
     Keyboard.removeHighlightKey(code);
