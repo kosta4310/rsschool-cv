@@ -84,9 +84,8 @@ function handleDown(e, code) {
       textField.selectionStart,
       textField.selectionEnd,
       'end',
-      
+
     );
-    
   }
   function checkConditions() {
     if (Keyboard.isPrintKey(code)) {
@@ -126,7 +125,29 @@ function handleDown(e, code) {
    arrayKeys.forEach((elem) => {
      keyBoardBlock.appendChild(elem);
    });
- }
+  }
+  switch (code) {
+    case 'Backspace':
+      if (textField.selectionStart > 0) {
+        textField.setRangeText(
+          '',
+          (textField.selectionStart -= 1),
+          textField.selectionEnd,
+        );
+      }
+      break;
+    case 'Delete':
+      
+        textField.setRangeText(
+          '',
+          (textField.selectionStart),
+          textField.selectionEnd += 1,
+        );
+      
+      break;
+    default:
+      break;
+  }
 }
 
 function handleUp(e, code) {
