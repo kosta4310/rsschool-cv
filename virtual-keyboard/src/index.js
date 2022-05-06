@@ -1,7 +1,12 @@
 import './css/style.css';
 import Keyboard from './modules/keyboard';
 
-let isEnglish = true;
+let isEnglish = (
+  window.sessionStorage.getItem('isEnglish')
+) === 'true';
+
+console.log(typeof isEnglish);
+console.log(isEnglish);
 const pressed = new Set();
 const pairOfkeys = ['AltLeft', 'ShiftLeft'];
 
@@ -37,15 +42,16 @@ function createHtml() {
 }
 createHtml();
 const keyboard = new Keyboard();
-let arrayKeys = keyboard.create('eng');
-console.log(`create: ${arrayKeys}`);
+
+let arrayKeys = keyboard.create(isEnglish ? 'eng' : 'kir');
+console.log(isEnglish);
 arrayKeys.forEach((elem) => {
    keyBoardBlock.appendChild(elem);
 });
 
 function handleDown(e, code) {
    e.preventDefault();
-   console.log(e);
+
    function changeLanguage() {
      pressed.add(code);
      /* eslint-disable-next-line */
@@ -54,15 +60,19 @@ function handleDown(e, code) {
      }
      pressed.clear();
      arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
-     isEnglish = !isEnglish;
+      isEnglish = !isEnglish;
+      console.log(typeof isEnglish);
+      window.sessionStorage.setItem('isEnglish', isEnglish);
+
      keyBoardBlock.innerHTML = '';
 
      arrayKeys.forEach((elem) => {
        keyBoardBlock.appendChild(elem);
      });
-     console.log(`change${arrayKeys}`);
    }
+
    changeLanguage(e);
+
    Keyboard.highlightKey(code);
    if (Keyboard.isPrintKey(code)) {
      if (code === 'Space') textField.textContent += ' ';
