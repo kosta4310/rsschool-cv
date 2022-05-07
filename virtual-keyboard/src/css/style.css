@@ -91,6 +91,7 @@ body {
 .language {
 }
 .made-for-windows {
+  font-size: 15px;
 }
 .textfield {
   width: 910px;
@@ -125,7 +126,8 @@ body {
   cursor: pointer;
 }
 .key-board-block span:hover {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
+  box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.7);
 }
 #Enter,
 #ShiftRight {
@@ -135,5 +137,6 @@ body {
   flex: 1 0 auto;
 }
 .active {
-  background-color: rgb(50, 20, 255);
+  /* background-color: rgb(50, 20, 255); */
+  background: linear-gradient(98.12deg, #545665 -0.27%, #c7d5f9 105.9%);
 }
