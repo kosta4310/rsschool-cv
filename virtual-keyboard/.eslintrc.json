@@ -10,7 +10,7 @@
     "sourceType": "module"
   },
   "rules": {
-    // "semi": "off",
+    "linebreak-style": 1,
     "no-plusplus": "off",
     "eol-last": "off",
     // 'no-tabs': 'off',
