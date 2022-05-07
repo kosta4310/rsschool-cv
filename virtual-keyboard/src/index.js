@@ -47,7 +47,47 @@ let arrayKeys = keyboard.create(isEnglish ? 'eng' : 'kir');
 arrayKeys.forEach((elem) => {
   keyBoardBlock.appendChild(elem);
 });
-
+function arrowUp() {
+  if (!textField.value.split('').includes('\n')) return;
+  let arr = [];
+  for (let i = 0; i < textField.value.length; i++) {
+    if (textField.value[i] === '\n') arr.push(i);
+    if (i === textField.selectionStart) break;
+  }
+  if (arr.length !== 0) {
+    const currentPos = textField.selectionStart;
+    if (arr.length === 1) {
+      if (currentPos === arr[arr.length - 1]) {
+        return;
+      }
+      console.log(`arr: ${arr}`);
+      console.log(`currentPos: ${currentPos}`);
+      // eslint-disable-next-line max-len
+      textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
+      textField.selectionEnd = textField.selectionStart;
+    } else {
+      console.log(`arr: ${arr}`);
+      console.log(`currentPos: ${currentPos}`);
+      if (currentPos === arr[arr.length - 1]) {
+        arr = arr.splice(0, arr.length - 1);
+        console.log(`arr: ${arr}`);
+        // eslint-disable-next-line max-len
+        textField.selectionStart = currentPos - arr[arr.length - 1] - 1
+          <= arr[arr.length - 1] - arr[arr.length - 2] - arr.length
+            ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
+            : arr[arr.length - 1];
+        textField.selectionEnd = textField.selectionStart;
+      } else {
+        // eslint-disable-next-line max-len
+        textField.selectionStart = currentPos - arr[arr.length - 1] - 1
+          <= arr[arr.length - 1] - arr[arr.length - 2] - arr.length
+            ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
+            : arr[arr.length - 1];
+        textField.selectionEnd = textField.selectionStart;
+      }
+    }
+  } else console.log('arr.leng = 0');
+}
 function handleDown(e, code) {
   e.preventDefault();
 
@@ -158,10 +198,14 @@ function handleDown(e, code) {
     case 'Enter':
       textField.setRangeText(
         '\n',
-        (textField.selectionStart),
+        textField.selectionStart,
         textField.selectionEnd,
-'end',
+        'end',
       );
+      break;
+    case 'ArrowUp':
+      arrowUp();
+
       break;
     default:
       break;
