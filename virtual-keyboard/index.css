@@ -1,0 +1,145 @@
+/*!*********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css ***!
+  \*********************************************************************/
+* {
+  padding: 0;
+  margin: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+body {
+  font-size: 25px;
+}
+.wrapper {
+  max-width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.label-wrapper {
+  display: inline-block;
+}
+.label {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(46, 40, 247, 0.7);
+}
+.language {
+}
+.made-for-windows {
+}
+.textfield {
+  width: 910px;
+  font-size: 25px;
+}
+.key-board-block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  align-content: start;
+  width: 910px;
+  padding: 10px 5px;
+  /* height: 300px; */
+  background-color: bisque;
+}
+.key-board-block span {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  padding: 0 17px;
+  height: 50px;
+  min-width: 48px;
+  border-radius: 10px;
+  border: 2px solid rgb(65, 105, 225);
+}
+.key-board-block span[data-kiril="true"] {
+  padding: 0 10px;
+}
+.key-board-block span {
+  cursor: pointer;
+}
+.key-board-block span:hover {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+#Enter,
+#ShiftRight {
+  padding: 0 30px;
+}
+#Space {
+  flex: 1 0 auto;
+}
+.active {
+  background-color: rgb(50, 20, 255);
+}
+
+
+/*# sourceMappingURL=index.css.map*/
