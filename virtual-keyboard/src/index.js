@@ -60,29 +60,21 @@ function arrowUp() {
       if (currentPos === arr[arr.length - 1]) {
         return;
       }
-      console.log(`arr: ${arr}`);
-      console.log(`currentPos: ${currentPos}`);
       // eslint-disable-next-line max-len
       textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
-      textField.selectionEnd = textField.selectionStart;
-    } else {
-      console.log(`arr: ${arr}`);
-      console.log(`currentPos: ${currentPos}`);
-      if (currentPos === arr[arr.length - 1]) {
+    } else if (currentPos === arr[arr.length - 1]) {
         arr = arr.splice(0, arr.length - 1);
-        console.log(`arrsplice: ${arr}`);
+
         if (arr.length === 1) {
           textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1]
               ? currentPos - arr[arr.length - 1] - 1
               : arr[arr.length - 1];
-          textField.selectionEnd = textField.selectionStart;
         } else {
           // eslint-disable-next-line max-len
           textField.selectionStart = currentPos - arr[arr.length - 1] - 1
             <= arr[arr.length - 1] - arr[arr.length - 2] - 1
               ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
               : arr[arr.length - 1];
-          textField.selectionEnd = textField.selectionStart;
         }
       } else {
         // eslint-disable-next-line max-len
@@ -90,10 +82,9 @@ function arrowUp() {
           <= arr[arr.length - 1] - arr[arr.length - 2] - 1
             ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
             : arr[arr.length - 1];
-        textField.selectionEnd = textField.selectionStart;
-      }
     }
-  } else console.log('arr.leng = 0');
+    textField.selectionEnd = textField.selectionStart;
+  }
 }
 function arrowDown() {
   const currentPos = textField.selectionStart;
@@ -105,13 +96,36 @@ function arrowDown() {
   if (arr.length !== 0) {
     let prev;
     let next;
-    for (let i = 0; i < arr.length; i++) {
-      if (currentPos >= arr[i]) {
-        prev = arr[i];
-        next = i + 1 < arr.length ? arr[i + 1] : 0;
-      } else { textField.selectionStart = textField.selectionEnd; }
-      if (next !== 0) textField.selectionStart = currentPos - prev + next;
+    let indPrev;
+    if (currentPos < arr[0]) {
+      prev = 0;
+      next = arr[0];
+      indPrev = 0;
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        if (i + 1 < arr.length) {
+          if (currentPos >= arr[i] && currentPos < arr[i + 1]) {
+          prev = arr[i];
+            next = arr[i + 1];
+            indPrev = i + 1;
+          break;
+        }
+        } else {
+          prev = arr[i];
+          next = arr[i];
+        }
+      }
     }
+
+    let newPos = currentPos - prev + next;
+    if (prev !== next) {
+      const indNext = indPrev + 1 < arr.length ? indPrev + 1 : textField.value.length;
+      if (newPos - arr[indPrev] > (arr[indNext] - arr[indPrev] - 1)) {
+        newPos = arr[indNext] - 1;
+      }
+    }
+
+    textField.selectionStart = newPos;
     textField.selectionEnd = textField.selectionStart;
   }
 }
