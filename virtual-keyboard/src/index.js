@@ -70,23 +70,50 @@ function arrowUp() {
       console.log(`currentPos: ${currentPos}`);
       if (currentPos === arr[arr.length - 1]) {
         arr = arr.splice(0, arr.length - 1);
-        console.log(`arr: ${arr}`);
-        // eslint-disable-next-line max-len
-        textField.selectionStart = currentPos - arr[arr.length - 1] - 1
-          <= arr[arr.length - 1] - arr[arr.length - 2] - arr.length
-            ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
-            : arr[arr.length - 1];
-        textField.selectionEnd = textField.selectionStart;
+        console.log(`arrsplice: ${arr}`);
+        if (arr.length === 1) {
+          textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1]
+              ? currentPos - arr[arr.length - 1] - 1
+              : arr[arr.length - 1];
+          textField.selectionEnd = textField.selectionStart;
+        } else {
+          // eslint-disable-next-line max-len
+          textField.selectionStart = currentPos - arr[arr.length - 1] - 1
+            <= arr[arr.length - 1] - arr[arr.length - 2] - 1
+              ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
+              : arr[arr.length - 1];
+          textField.selectionEnd = textField.selectionStart;
+        }
       } else {
         // eslint-disable-next-line max-len
         textField.selectionStart = currentPos - arr[arr.length - 1] - 1
-          <= arr[arr.length - 1] - arr[arr.length - 2] - arr.length
+          <= arr[arr.length - 1] - arr[arr.length - 2] - 1
             ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
             : arr[arr.length - 1];
         textField.selectionEnd = textField.selectionStart;
       }
     }
   } else console.log('arr.leng = 0');
+}
+function arrowDown() {
+  const currentPos = textField.selectionStart;
+  const arr = [];
+  for (let i = 0; i < textField.value.length; i++) {
+    if (textField.value[i] === '\n') arr.push(i + 1);
+  }
+
+  if (arr.length !== 0) {
+    let prev;
+    let next;
+    for (let i = 0; i < arr.length; i++) {
+      if (currentPos >= arr[i]) {
+        prev = arr[i];
+        next = i + 1 < arr.length ? arr[i + 1] : 0;
+      } else { textField.selectionStart = textField.selectionEnd; }
+      if (next !== 0) textField.selectionStart = currentPos - prev + next;
+    }
+    textField.selectionEnd = textField.selectionStart;
+  }
 }
 function handleDown(e, code) {
   e.preventDefault();
@@ -206,6 +233,9 @@ function handleDown(e, code) {
     case 'ArrowUp':
       arrowUp();
 
+      break;
+    case 'ArrowDown':
+      arrowDown();
       break;
     default:
       break;
