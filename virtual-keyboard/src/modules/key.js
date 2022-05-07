@@ -8,7 +8,6 @@ export default class Key {
   createKey(language) {
     const key = document.createElement('span');
     key.innerHTML = language === 'eng' ? this.engKey : this.kirKey;
-
     return key;
   }
 }
