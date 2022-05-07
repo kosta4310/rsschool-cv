@@ -26,9 +26,11 @@ function createHtml() {
    const label = createDocumentElement('div', 'label');
    board.appendChild(label);
    languages = createDocumentElement('span', 'language');
-   languages.textContent = isEnglish ? 'English' : 'Русский';
+   languages.textContent += isEnglish
+    ? 'English'
+    : 'Русский';
    const madeForWindows = createDocumentElement('span', 'made-for-windows');
-   madeForWindows.textContent = 'Made for Windows';
+   madeForWindows.innerHTML = 'Change Language: LeftAlt + LeftShift<br>Made for Windows';
    label.appendChild(languages);
    label.appendChild(madeForWindows);
    board.appendChild(label);
@@ -135,6 +137,7 @@ function handleDown(e, code) {
   Keyboard.highlightKey(code);
    function changeLanguage() {
      pressed.add(code);
+     console.log(code);
      /* eslint-disable-next-line */
      for (const key of pairOfkeys) {
        if (!pressed.has(key)) return;
@@ -145,10 +148,12 @@ function handleDown(e, code) {
      capsLock = false;
      languages.textContent = isEnglish ? 'English' : 'Русский';
      window.sessionStorage.setItem('isEnglish', isEnglish);
-     keyBoardBlock.innerHTML = '';
+     setInterval(() => {
+       keyBoardBlock.innerHTML = '';
      arrayKeys.forEach((elem) => {
        keyBoardBlock.appendChild(elem);
      });
+     }, 500);
    }
   changeLanguage(e);
   function insertSimbol() {
