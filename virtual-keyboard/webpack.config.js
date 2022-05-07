@@ -7,11 +7,6 @@ const { resolve } = require("path");
 const { Hash } = require("crypto");
 // const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
-// ejs.renderFile(filename, data, options, function (err, str) {
-//   // str => Rendered HTML string
-// });
-
 const isProduction = process.env.NODE_ENV == "production";
 
 // const stylesHandler = isProduction
@@ -39,9 +34,7 @@ const config = {
     //   patterns: [{ from: "./src/assets", to: "assets" }],
     // }),
     new CleanWebpackPlugin(),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+   
   ],
   module: {
     rules: [

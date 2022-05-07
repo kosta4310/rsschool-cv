@@ -170,9 +170,21 @@ function handleDown(e, code) {
   }
   function checkConditions() {
     if (Keyboard.isPrintKey(code)) {
-      if (code === 'Space') textField.textContent += ' ';
-      else if (code === 'Tab') textField.textContent += '  ';
-      else if (!capsLock) {
+      if (code === 'Space') {
+        textField.setRangeText(
+          ' ',
+          textField.selectionStart,
+          textField.selectionEnd,
+          'end',
+        );
+      } else if (code === 'Tab') {
+        textField.setRangeText(
+          '    ',
+          textField.selectionStart,
+          textField.selectionEnd,
+          'end',
+        );
+      } else if (!capsLock) {
         // textField.textContent += keyboard.getSimbolKey(code);
         insertSimbol(code);
       } else {
