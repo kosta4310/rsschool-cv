@@ -267,6 +267,91 @@ arrayKeys.forEach(function (elem) {
   keyBoardBlock.appendChild(elem);
 });
 
+function arrowUp() {
+  if (!textField.value.split('').includes('\n')) return;
+  var arr = [];
+
+  for (var i = 0; i < textField.value.length; i++) {
+    if (textField.value[i] === '\n') arr.push(i);
+    if (i === textField.selectionStart) break;
+  }
+
+  if (arr.length !== 0) {
+    var currentPos = textField.selectionStart;
+
+    if (arr.length === 1) {
+      if (currentPos === arr[arr.length - 1]) {
+        return;
+      } // eslint-disable-next-line max-len
+
+
+      textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
+    } else if (currentPos === arr[arr.length - 1]) {
+      arr = arr.splice(0, arr.length - 1);
+
+      if (arr.length === 1) {
+        textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
+      } else {
+        // eslint-disable-next-line max-len
+        textField.selectionStart = currentPos - arr[arr.length - 1] - 1 <= arr[arr.length - 1] - arr[arr.length - 2] - 1 ? currentPos - arr[arr.length - 1] + arr[arr.length - 2] : arr[arr.length - 1];
+      }
+    } else {
+      // eslint-disable-next-line max-len
+      textField.selectionStart = currentPos - arr[arr.length - 1] - 1 <= arr[arr.length - 1] - arr[arr.length - 2] - 1 ? currentPos - arr[arr.length - 1] + arr[arr.length - 2] : arr[arr.length - 1];
+    }
+
+    textField.selectionEnd = textField.selectionStart;
+  }
+}
+
+function arrowDown() {
+  var currentPos = textField.selectionStart;
+  var arr = [];
+
+  for (var i = 0; i < textField.value.length; i++) {
+    if (textField.value[i] === '\n') arr.push(i + 1);
+  }
+
+  if (arr.length !== 0) {
+    var prev;
+    var next;
+    var indPrev;
+
+    if (currentPos < arr[0]) {
+      prev = 0;
+      next = arr[0];
+      indPrev = 0;
+    } else {
+      for (var _i = 0; _i < arr.length; _i++) {
+        if (_i + 1 < arr.length) {
+          if (currentPos >= arr[_i] && currentPos < arr[_i + 1]) {
+            prev = arr[_i];
+            next = arr[_i + 1];
+            indPrev = _i + 1;
+            break;
+          }
+        } else {
+          prev = arr[_i];
+          next = arr[_i];
+        }
+      }
+    }
+
+    var newPos = currentPos - prev + next;
+
+    if (prev !== next) {
+      var indNext = indPrev + 1 < arr.length ? indPrev + 1 : textField.value.length;
+
+      if (newPos - arr[indPrev] > arr[indNext] - arr[indPrev] - 1) {
+        newPos = arr[indNext] - 1;
+      }
+    }
+
+    textField.selectionStart = newPos;
+    textField.selectionEnd = textField.selectionStart;
+  }
+}
+
 function handleDown(e, code) {
   e.preventDefault();
   _modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].highlightKey(code);
@@ -347,6 +432,47 @@ function handleDown(e, code) {
     arrayKeys.forEach(function (elem) {
       keyBoardBlock.appendChild(elem);
     });
+  }
+
+  switch (code) {
+    case 'Backspace':
+      if (textField.selectionStart > 0) {
+        textField.setRangeText('', textField.selectionStart -= 1, textField.selectionEnd);
+      }
+
+      break;
+
+    case 'Delete':
+      textField.setRangeText('', textField.selectionStart, textField.selectionEnd += 1);
+      break;
+
+    case 'ArrowLeft':
+      if (textField.selectionStart > 0) {
+        textField.selectionStart -= 1;
+        textField.selectionEnd -= 1;
+      }
+
+      break;
+
+    case 'ArrowRight':
+      textField.selectionEnd += 1;
+      textField.selectionStart += 1;
+      break;
+
+    case 'Enter':
+      textField.setRangeText('\n', textField.selectionStart, textField.selectionEnd, 'end');
+      break;
+
+    case 'ArrowUp':
+      arrowUp();
+      break;
+
+    case 'ArrowDown':
+      arrowDown();
+      break;
+
+    default:
+      break;
   }
 }
 
