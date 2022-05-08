@@ -220,7 +220,7 @@ function handleDown(e, code) {
    languages.textContent = isEnglish ? 'English' : 'Русский';
    window.sessionStorage.setItem('isEnglish', isEnglish);
    setInterval(() => {
-     keyBoardBlock.innerHTML = "";
+     keyBoardBlock.innerHTML = '';
      arrayKeys.forEach((elem) => {
        keyBoardBlock.appendChild(elem);
      });
