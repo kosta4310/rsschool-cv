@@ -30,7 +30,7 @@ var Key = /*#__PURE__*/function () {
   _createClass(Key, [{
     key: "createKey",
     value: function createKey(language) {
-      var key = document.createElement('span');
+      var key = document.createElement('div');
       key.innerHTML = language === 'eng' ? this.engKey : this.kirKey;
       return key;
     }
@@ -245,14 +245,14 @@ function createHtml() {
   var label = createDocumentElement('div', 'label');
   board.appendChild(label);
   languages = createDocumentElement('span', 'language');
-  languages.textContent = isEnglish ? 'English' : 'Русский';
+  languages.textContent += isEnglish ? 'English' : 'Русский';
   var madeForWindows = createDocumentElement('span', 'made-for-windows');
-  madeForWindows.textContent = 'Made for Windows';
+  madeForWindows.innerHTML = 'Change Language: LeftAlt + LeftShift<br>Made for Windows';
   label.appendChild(languages);
   label.appendChild(madeForWindows);
   board.appendChild(label);
   textField = createDocumentElement('textarea', 'text-field');
-  textField.setAttribute('rows', '10');
+  textField.setAttribute('rows', '8');
   textField.setAttribute('autofocus', true);
   textField.style.fontSize = '25px';
   board.appendChild(textField);
@@ -358,6 +358,7 @@ function handleDown(e, code) {
 
   function changeLanguage() {
     pressed.add(code);
+    console.log(code);
     /* eslint-disable-next-line */
 
     var _iterator = _createForOfIteratorHelper(pairOfkeys),
@@ -380,10 +381,12 @@ function handleDown(e, code) {
     capsLock = false;
     languages.textContent = isEnglish ? 'English' : 'Русский';
     window.sessionStorage.setItem('isEnglish', isEnglish);
-    keyBoardBlock.innerHTML = '';
-    arrayKeys.forEach(function (elem) {
-      keyBoardBlock.appendChild(elem);
-    });
+    setInterval(function () {
+      keyBoardBlock.innerHTML = '';
+      arrayKeys.forEach(function (elem) {
+        keyBoardBlock.appendChild(elem);
+      });
+    }, 500);
   }
 
   changeLanguage(e);
@@ -433,10 +436,12 @@ function handleDown(e, code) {
     capsLock = false;
     languages.textContent = isEnglish ? 'English' : 'Русский';
     window.sessionStorage.setItem('isEnglish', isEnglish);
-    keyBoardBlock.innerHTML = '';
-    arrayKeys.forEach(function (elem) {
-      keyBoardBlock.appendChild(elem);
-    });
+    setInterval(function () {
+      keyBoardBlock.innerHTML = '';
+      arrayKeys.forEach(function (elem) {
+        keyBoardBlock.appendChild(elem);
+      });
+    }, 1000);
   }
 
   switch (code) {
