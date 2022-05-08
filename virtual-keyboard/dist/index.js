@@ -19,19 +19,44 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 var Key = /*#__PURE__*/function () {
-  function Key(code, kirKey, engKey) {
+  function Key(code, kirKey, engKey, kirilShift, engShift) {
     _classCallCheck(this, Key);
 
     this.code = code;
     this.kirKey = kirKey;
     this.engKey = engKey;
+    this.kirilShift = kirilShift;
+    this.engShift = engShift;
   }
 
   _createClass(Key, [{
     key: "createKey",
     value: function createKey(language) {
       var key = document.createElement('div');
-      key.innerHTML = language === 'eng' ? this.engKey : this.kirKey;
+      var extra;
+
+      if (language === 'eng') {
+        if (this.engShift) {
+          key.innerHTML = this.engKey;
+          extra = document.createElement('span');
+          extra.innerHTML = this.engShift;
+          key.appendChild(extra);
+          return key;
+        }
+
+        key.innerHTML = this.engKey;
+      } else {
+        if (this.kirilShift) {
+          key.innerHTML = this.kirKey;
+          extra = document.createElement('span');
+          extra.innerHTML = this.kirilShift;
+          key.appendChild(extra);
+          return key;
+        }
+
+        key.innerHTML = this.kirKey;
+      }
+
       return key;
     }
   }]);
@@ -62,11 +87,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/* eslint-disable max-len */
 
 var array = {
   codeArray: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight', 'ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Language'],
   kiril: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'del', 'caps<br>lock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter', 'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '&#8593', 'shift', 'ctrl', 'alt', '', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594', 'ru'],
+  kirilShift: [false, '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', false, false, false, false, false, false, false, false, false, false, false, false, false, false, '/', false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ',', false, false, false, false, false, false, false, false, false, false, false],
   english: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del', 'caps<br>lock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8593', 'shift', 'ctrl', 'alt', '', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594', 'us'],
+  engShift: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', false, false, false, false, false, false, false, false, false, false, false, false, '{', '}', '|', false, false, false, false, false, false, false, false, false, false, false, ':', '"', false, false, false, false, false, false, false, false, false, '<', '>', '?', false, false, false, false, false, false, false, false, false, false, false],
   printKey: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'Space']
 };
 
@@ -82,7 +110,9 @@ var Keyboard = /*#__PURE__*/function () {
 
     this.kiril = array.kiril;
     this.english = array.english;
-    this.codeArray = array.codeArray; // this.arrayKeys = [];
+    this.codeArray = array.codeArray;
+    this.kirilShift = array.kirilShift;
+    this.engShift = array.engShift;
   }
 
   _createClass(Keyboard, [{
@@ -92,7 +122,7 @@ var Keyboard = /*#__PURE__*/function () {
       this.arrayKeys = [];
 
       for (var i = 0; i < this.codeArray.length; i++) {
-        var temp = new _key__WEBPACK_IMPORTED_MODULE_0__["default"](this.codeArray[i], this.kiril[i], this.english[i]);
+        var temp = new _key__WEBPACK_IMPORTED_MODULE_0__["default"](this.codeArray[i], this.kiril[i], this.english[i], this.kirilShift[i], this.engShift[i]);
         this.arrayInstance.push(temp);
         var elem = temp.createKey(this.language);
         elem.id = this.codeArray[i];
@@ -106,9 +136,26 @@ var Keyboard = /*#__PURE__*/function () {
     }
   }, {
     key: "getSimbolKey",
-    value: function getSimbolKey(code) {
+    value: function getSimbolKey(code, isShift) {
       var index = this.codeArray.indexOf(code);
-      var simbol = this.language === 'eng' ? this.english[index] : this.kiril[index];
+      var simbol;
+
+      if (code === 'Tab') {
+        simbol = '    ';
+      } else if (code === 'Space') {
+        simbol = ' ';
+      } else if (this.language === 'eng') {
+        if (isShift) {
+          simbol = this.engShift[index] ? this.engShift[index] : this.english[index];
+        } else {
+          simbol = this.english[index];
+        }
+      } else if (isShift) {
+        simbol = this.kirilShift[index] ? this.kirilShift[index] : this.kiril[index];
+      } else {
+        simbol = this.kiril[index];
+      }
+
       return simbol;
     }
   }], [{
@@ -358,7 +405,6 @@ function handleDown(e, code) {
 
   function changeLanguage() {
     pressed.add(code);
-    console.log(code);
     /* eslint-disable-next-line */
 
     var _iterator = _createForOfIteratorHelper(pairOfkeys),
@@ -392,20 +438,16 @@ function handleDown(e, code) {
   changeLanguage(e);
 
   function insertSimbol() {
-    textField.setRangeText(keyboard.getSimbolKey(code), textField.selectionStart, textField.selectionEnd, 'end');
+    textField.setRangeText(keyboard.getSimbolKey(code, isShift), textField.selectionStart, textField.selectionEnd, 'end');
   }
 
   function insertUpperCaseSimbol() {
-    textField.setRangeText(keyboard.getSimbolKey(code).toUpperCase(), textField.selectionStart, textField.selectionEnd, 'end');
+    textField.setRangeText(keyboard.getSimbolKey(code, isShift).toUpperCase(), textField.selectionStart, textField.selectionEnd, 'end');
   }
 
   function checkConditions() {
     if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code)) {
-      if (code === 'Space') {
-        textField.setRangeText(' ', textField.selectionStart, textField.selectionEnd, 'end');
-      } else if (code === 'Tab') {
-        textField.setRangeText('    ', textField.selectionStart, textField.selectionEnd, 'end');
-      } else if (!capsLock) {
+      if (!capsLock) {
         // textField.textContent += keyboard.getSimbolKey(code);
         insertSimbol(code);
       } else {
@@ -416,13 +458,15 @@ function handleDown(e, code) {
     }
   }
 
-  if (code === 'ShiftLeft') {
+  if (code === 'ShiftLeft' || code === 'ShiftRight') {
     isShift = true;
   }
 
   if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code) && isShift) {
     if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code)) {
-      if (code === 'Space') textField.textContent += ' ';else if (code === 'Tab') textField.textContent += '  ';else if (!capsLock && !isShift || capsLock && isShift) {
+      // if (code === 'Space') textField.textContent += ' ';
+      // else if (code === 'Tab') textField.textContent += '  ';
+      if (!capsLock && !isShift || capsLock && isShift) {
         insertSimbol(code);
       } else {
         insertUpperCaseSimbol(code);
@@ -490,7 +534,7 @@ function handleUp(e, code) {
   e.preventDefault();
   pressed["delete"](code);
 
-  if (code === 'ShiftLeft') {
+  if (code === 'ShiftLeft' || code === 'ShiftRight') {
     isShift = false;
   }
 
