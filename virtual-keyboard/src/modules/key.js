@@ -6,7 +6,7 @@ export default class Key {
   }
 
   createKey(language) {
-    const key = document.createElement('span');
+    const key = document.createElement('div');
     key.innerHTML = language === 'eng' ? this.engKey : this.kirKey;
     return key;
   }

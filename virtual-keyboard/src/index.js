@@ -35,7 +35,7 @@ function createHtml() {
    label.appendChild(madeForWindows);
    board.appendChild(label);
    textField = createDocumentElement('textarea', 'text-field');
-   textField.setAttribute('rows', '10');
+   textField.setAttribute('rows', '8');
    textField.setAttribute('autofocus', true);
    textField.style.fontSize = '25px';
    board.appendChild(textField);
@@ -219,10 +219,12 @@ function handleDown(e, code) {
    capsLock = false;
    languages.textContent = isEnglish ? 'English' : 'Русский';
    window.sessionStorage.setItem('isEnglish', isEnglish);
-   keyBoardBlock.innerHTML = '';
-   arrayKeys.forEach((elem) => {
-     keyBoardBlock.appendChild(elem);
-   });
+   setInterval(() => {
+     keyBoardBlock.innerHTML = "";
+     arrayKeys.forEach((elem) => {
+       keyBoardBlock.appendChild(elem);
+     });
+   }, 1000);
   }
   switch (code) {
     case 'Backspace':
