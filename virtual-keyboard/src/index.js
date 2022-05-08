@@ -137,7 +137,6 @@ function handleDown(e, code) {
   Keyboard.highlightKey(code);
    function changeLanguage() {
      pressed.add(code);
-     console.log(code);
      /* eslint-disable-next-line */
      for (const key of pairOfkeys) {
        if (!pressed.has(key)) return;
@@ -158,7 +157,7 @@ function handleDown(e, code) {
   changeLanguage(e);
   function insertSimbol() {
     textField.setRangeText(
-      keyboard.getSimbolKey(code),
+      keyboard.getSimbolKey(code, isShift),
       textField.selectionStart,
       textField.selectionEnd,
       'end',
@@ -166,7 +165,7 @@ function handleDown(e, code) {
   }
   function insertUpperCaseSimbol() {
     textField.setRangeText(
-      keyboard.getSimbolKey(code).toUpperCase(),
+      keyboard.getSimbolKey(code, isShift).toUpperCase(),
       textField.selectionStart,
       textField.selectionEnd,
       'end',
@@ -175,21 +174,7 @@ function handleDown(e, code) {
   }
   function checkConditions() {
     if (Keyboard.isPrintKey(code)) {
-      if (code === 'Space') {
-        textField.setRangeText(
-          ' ',
-          textField.selectionStart,
-          textField.selectionEnd,
-          'end',
-        );
-      } else if (code === 'Tab') {
-        textField.setRangeText(
-          '    ',
-          textField.selectionStart,
-          textField.selectionEnd,
-          'end',
-        );
-      } else if (!capsLock) {
+       if (!capsLock) {
         // textField.textContent += keyboard.getSimbolKey(code);
         insertSimbol(code);
       } else {
@@ -199,14 +184,14 @@ function handleDown(e, code) {
       textField.focus();
     }
   }
-  if (code === 'ShiftLeft') {
+  if (code === 'ShiftLeft' || code === 'ShiftRight') {
     isShift = true;
   }
   if (Keyboard.isPrintKey(code) && isShift) {
     if (Keyboard.isPrintKey(code)) {
-      if (code === 'Space') textField.textContent += ' ';
-      else if (code === 'Tab') textField.textContent += '  ';
-      else if ((!capsLock && !isShift) || (capsLock && isShift)) {
+      // if (code === 'Space') textField.textContent += ' ';
+      // else if (code === 'Tab') textField.textContent += '  ';
+      if ((!capsLock && !isShift) || (capsLock && isShift)) {
         insertSimbol(code);
       } else {
         insertUpperCaseSimbol(code);
@@ -278,7 +263,7 @@ function handleDown(e, code) {
 function handleUp(e, code) {
    e.preventDefault();
   pressed.delete(code);
-  if (code === 'ShiftLeft') {
+  if (code === 'ShiftLeft' || code === 'ShiftRight') {
     isShift = false;
   }
   if (code === 'CapsLock' && capsLock) {

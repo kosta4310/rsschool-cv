@@ -37,6 +37,7 @@ input,
 button,
 textarea {
   font-family: inherit;
+  text-align: justify;
 }
 
 input::-ms-clear {
@@ -88,8 +89,6 @@ body {
   justify-content: space-between;
   background-color: rgb(46, 40, 247, 0.7);
 }
-.language {
-}
 .made-for-windows {
   font-size: 15px;
 }
@@ -111,7 +110,7 @@ body {
 
 .key-board-block div {
   display: inline-flex;
-
+  position: relative;
   align-items: center;
   justify-content: center;
   padding: 0 17px;
@@ -126,7 +125,6 @@ body {
 }
 
 .key-board-block div.active {
-  position: relative;
   background-color: #b18597;
   transform: translate(0, 4px);
   -webkit-box-shadow: none;
@@ -146,4 +144,12 @@ body {
 }
 #Space {
   flex: 1 0 auto;
+}
+.key-board-block div span {
+  display: inline-block;
+  position: absolute;
+  font-weight: bold;
+  top: 0;
+  left: 5px;
+  font-size: 18px;
 }
