@@ -156,7 +156,7 @@ function handleDown(e, code) {
    }
   changeLanguage(e);
   function insertSimbol() {
-    textField.setRangeText(
+      textField.setRangeText(
       keyboard.getSimbolKey(code, isShift),
       textField.selectionStart,
       textField.selectionEnd,
@@ -175,12 +175,10 @@ function handleDown(e, code) {
   function checkConditions() {
     if (Keyboard.isPrintKey(code)) {
        if (!capsLock) {
-        // textField.textContent += keyboard.getSimbolKey(code);
         insertSimbol(code);
       } else {
         insertUpperCaseSimbol(code);
       }
-
       textField.focus();
     }
   }
