@@ -87,7 +87,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/* eslint-disable max-len */
 
 var array = {
   codeArray: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight', 'ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Language'],
@@ -261,12 +260,6 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
 /* harmony import */ var _modules_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/keyboard */ "./src/modules/keyboard.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 var isEnglish = window.sessionStorage.getItem('isEnglish') === 'true';
@@ -329,8 +322,7 @@ function arrowUp() {
     if (arr.length === 1) {
       if (currentPos === arr[arr.length - 1]) {
         return;
-      } // eslint-disable-next-line max-len
-
+      }
 
       textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
     } else if (currentPos === arr[arr.length - 1]) {
@@ -339,11 +331,9 @@ function arrowUp() {
       if (arr.length === 1) {
         textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
       } else {
-        // eslint-disable-next-line max-len
         textField.selectionStart = currentPos - arr[arr.length - 1] - 1 <= arr[arr.length - 1] - arr[arr.length - 2] - 1 ? currentPos - arr[arr.length - 1] + arr[arr.length - 2] : arr[arr.length - 1];
       }
     } else {
-      // eslint-disable-next-line max-len
       textField.selectionStart = currentPos - arr[arr.length - 1] - 1 <= arr[arr.length - 1] - arr[arr.length - 2] - 1 ? currentPos - arr[arr.length - 1] + arr[arr.length - 2] : arr[arr.length - 1];
     }
 
@@ -405,21 +395,14 @@ function handleDown(e, code) {
 
   function changeLanguage() {
     pressed.add(code);
-    /* eslint-disable-next-line */
 
-    var _iterator = _createForOfIteratorHelper(pairOfkeys),
-        _step;
+    for (var i = 0; i < pairOfkeys.length; i++) {
+      var key = pairOfkeys[i];
+      if (!pressed.has(key)) return;
+    } //  for (const key of pairOfkeys) {
+    //    if (!pressed.has(key)) return;
+    //  }
 
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var key = _step.value;
-        if (!pressed.has(key)) return;
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
 
     pressed.clear();
     arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
