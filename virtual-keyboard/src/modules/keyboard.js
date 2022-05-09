@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Key from './key';
 
 const array = {
