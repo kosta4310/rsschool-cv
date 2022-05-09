@@ -187,8 +187,6 @@ function handleDown(e, code) {
   }
   if (Keyboard.isPrintKey(code) && isShift) {
     if (Keyboard.isPrintKey(code)) {
-      // if (code === 'Space') textField.textContent += ' ';
-      // else if (code === 'Tab') textField.textContent += '  ';
       if ((!capsLock && !isShift) || (capsLock && isShift)) {
         insertSimbol(code);
       } else {
