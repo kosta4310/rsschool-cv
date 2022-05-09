@@ -62,7 +62,6 @@ function arrowUp() {
       if (currentPos === arr[arr.length - 1]) {
         return;
       }
-      // eslint-disable-next-line max-len
       textField.selectionStart = currentPos - arr[arr.length - 1] <= arr[arr.length - 1] ? currentPos - arr[arr.length - 1] - 1 : arr[arr.length - 1];
     } else if (currentPos === arr[arr.length - 1]) {
         arr = arr.splice(0, arr.length - 1);
@@ -72,14 +71,12 @@ function arrowUp() {
               ? currentPos - arr[arr.length - 1] - 1
               : arr[arr.length - 1];
         } else {
-          // eslint-disable-next-line max-len
-          textField.selectionStart = currentPos - arr[arr.length - 1] - 1
+            textField.selectionStart = currentPos - arr[arr.length - 1] - 1
             <= arr[arr.length - 1] - arr[arr.length - 2] - 1
               ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
               : arr[arr.length - 1];
         }
       } else {
-        // eslint-disable-next-line max-len
         textField.selectionStart = currentPos - arr[arr.length - 1] - 1
           <= arr[arr.length - 1] - arr[arr.length - 2] - 1
             ? currentPos - arr[arr.length - 1] + arr[arr.length - 2]
@@ -137,10 +134,13 @@ function handleDown(e, code) {
   Keyboard.highlightKey(code);
    function changeLanguage() {
      pressed.add(code);
-     /* eslint-disable-next-line */
-     for (const key of pairOfkeys) {
+     for (let i = 0; i < pairOfkeys.length; i++) {
+       const key = pairOfkeys[i];
        if (!pressed.has(key)) return;
      }
+    //  for (const key of pairOfkeys) {
+    //    if (!pressed.has(key)) return;
+    //  }
      pressed.clear();
      arrayKeys = isEnglish ? keyboard.create('kir') : keyboard.create('eng');
      isEnglish = !isEnglish;
