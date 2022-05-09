@@ -1,6 +1,10 @@
 /*!*********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css ***!
   \*********************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap);
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css (1) ***!
+  \*************************************************************************/
 * {
   padding: 0;
   margin: 0;
@@ -32,6 +36,7 @@ html,
 body {
   line-height: 1;
   font-size: 14px;
+  font-family: "Courier Prime", monospace;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -96,7 +101,7 @@ body {
   font-size: 15px;
 }
 .textfield {
-  width: 910px;
+  width: 1000px;
   font-size: 25px;
 }
 .key-board-block {
@@ -105,7 +110,7 @@ body {
   flex-wrap: wrap;
   gap: 5px 8px;
   align-content: start;
-  width: 910px;
+  width: 1000px;
   padding: 10px 5px;
 
   background-color: bisque;

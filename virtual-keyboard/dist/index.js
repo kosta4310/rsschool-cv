@@ -448,7 +448,6 @@ function handleDown(e, code) {
   function checkConditions() {
     if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code)) {
       if (!capsLock) {
-        // textField.textContent += keyboard.getSimbolKey(code);
         insertSimbol(code);
       } else {
         insertUpperCaseSimbol(code);
@@ -464,8 +463,6 @@ function handleDown(e, code) {
 
   if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code) && isShift) {
     if (_modules_keyboard__WEBPACK_IMPORTED_MODULE_1__["default"].isPrintKey(code)) {
-      // if (code === 'Space') textField.textContent += ' ';
-      // else if (code === 'Tab') textField.textContent += '  ';
       if (!capsLock && !isShift || capsLock && isShift) {
         insertSimbol(code);
       } else {
