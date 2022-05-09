@@ -1,4 +1,0 @@
-# rsschool-cv
-
-virtual-keyboard
-
