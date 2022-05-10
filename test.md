@@ -1,1 +1,1 @@
-test dat
+git commit -m "init: start cssMemSlider-task `LANG=en_EN date +'(%a, %b %d, %Y %r)'`"
