@@ -1,6 +1,6 @@
 # Kostiantyn Pavlov
 
-Database administrator, Entry Level
+Front-end developer, Entry Level
 
 ---
 
@@ -32,9 +32,12 @@ For a long time I wanted to do my favorite thing - programming. At first, I lear
 - PostgreSQL - basic
 - Java - basic
 - Html/CSS - basic
+- Sass,Scss - basic
 - Blind typing
-- JavaScript - in progress
-
+- JavaScript - basic
+- NodeJS - basic
+- Webpack - basic
+- Git - basic
 ---
 
 ### Tools
@@ -42,15 +45,18 @@ For a long time I wanted to do my favorite thing - programming. At first, I lear
 - PhotoShop,Marsy,Figma
 - Git,GitHub
 - Slack
+- Discord
 - Intellij IDEA Cummunity Edition
 - Visual Studio Code
 - Dbeaver
+
 
 ---
 
 ### Courses
 
-- **Veteranius bootcamp 3_0** - DBA
+- **Veteranius bootcamp 3_0** - Data base administrator PostgreSQL
+- **Rolling Scopes School 2022Q1 JavaScript/Front-End Stage1** - in progress
 
 ---
 
@@ -76,6 +82,7 @@ return result;
 
 ### Experience
 
+- 
 - **Database administrator trainee** - Veteranius,Kyiv,Ukraine  
   Creating a database and organizing work with it through the application together with a team of developers in Python.
 - While learning the JAVA programming language, I was invented and implemented the algorithm of the famous sapper game and created a GUI using the Swing framework.
@@ -87,12 +94,18 @@ return result;
 ### Projects
 
 - [**Data Ocean Sanction Parsing**](https://github.com/VeteraniusWeb2021/SanctionParsing.git) - School project (work not completed due to war)   
-- [**Mineersweeper Game**](https://github.com/kosta4310/Saper)   
-- [**Shelter project**](https://kosta4310.github.io/rsschool-cv/shelter-dom/pages/main/index.html) - School project
+  Used skills PostgreSQL
+- [**Mineersweeper Game**](https://github.com/kosta4310/Saper) - private project   
+  Used skills Java and Java GUI Swing 
+- [**Shelter project**](https://kosta4310.github.io/rsschool-cv/shelter-dom/pages/main/index.html) - School project   
+  Used skills Html,Css,Sass,JavaScript
+- [**Virtual keyboard**](https://kosta4310.github.io/rsschool-cv/virtual-keyboard/dist/) - School project   
+  Used skills Html,Css,Webpack,JavaScript
 
 ---
 
 ### Languages
 
 English - Basic knowledge  
-Ukrainian - native
+Ukrainian - native   
+Russian - fluency
