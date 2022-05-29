@@ -86,8 +86,9 @@ return result;
 
 ### Projects
 
-- [**Data Ocean Sanction Parsing**](https://github.com/VeteraniusWeb2021/SanctionParsing.git) - Work not completed due to war
-- [**Mineersweeper Game**](https://github.com/kosta4310/Saper)
+- [**Data Ocean Sanction Parsing**](https://github.com/VeteraniusWeb2021/SanctionParsing.git) - School project (work not completed due to war)   
+- [**Mineersweeper Game**](https://github.com/kosta4310/Saper)   
+- [**Shelter project**](https://kosta4310.github.io/rsschool-cv/shelter-dom/pages/main/index.html) - School project
 
 ---
 
