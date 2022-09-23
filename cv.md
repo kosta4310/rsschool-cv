@@ -108,4 +108,4 @@ return result;
 
 English - Basic knowledge  
 Ukrainian - native   
-Russian - fluency
+Russian - fluenty
